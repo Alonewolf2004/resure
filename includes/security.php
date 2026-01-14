@@ -4,9 +4,32 @@
  * Include this at the top of every PHP page
  */
 
+// Load environment variables
+function loadEnv($path) {
+    if (!file_exists($path)) {
+        return;
+    }
+    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        list($name, $value) = explode('=', $line, 2);
+        $name = trim($name);
+        $value = trim($value);
+        if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
+            putenv(sprintf('%s=%s', $name, $value));
+            $_ENV[$name] = $value;
+            $_SERVER[$name] = $value;
+        }
+    }
+}
+
+// Load .env from root directory
+loadEnv(dirname(__DIR__) . '/.env');
+
 // Start secure session
+$secure_cookies = getenv('SECURE_COOKIES') === 'true' || (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on');
 ini_set('session.cookie_httponly', 1);
-ini_set('session.cookie_secure', 0); // Set to 1 in production with HTTPS
+ini_set('session.cookie_secure', $secure_cookies ? 1 : 0);
 ini_set('session.use_strict_mode', 1);
 ini_set('session.cookie_samesite', 'Strict');
 
@@ -105,7 +128,12 @@ function validatePassword($password) {
 
 // Secure Database Connection
 function getSecureConnection() {
-    $conn = new mysqli("localhost", "root", "", "login page");
+    $host = getenv('DB_HOST') ?: 'localhost';
+    $user = getenv('DB_USER') ?: 'root';
+    $pass = getenv('DB_PASS') ?: '';
+    $name = getenv('DB_NAME') ?: 'login page';
+
+    $conn = new mysqli($host, $user, $pass, $name);
     if ($conn->connect_error) {
         error_log("Database connection failed: " . $conn->connect_error);
         die("Connection failed. Please try again later.");
