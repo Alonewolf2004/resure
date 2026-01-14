@@ -4,119 +4,795 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="about.css">
-    <title>ABOUT</title>
+    <title>About Us - ReSure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c1918dbe9d.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+            height: 70px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: 0 4px 20px rgba(0, 119, 182, 0.3);
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-card h2 {
+            color: #1f2937;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-card h2 i {
+            color: #0077b6;
+            font-size: 1.3rem;
+        }
+
+        .section-card p {
+            color: #6b7280;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(0, 119, 182, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 119, 182, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 119, 182, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #1f2937;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .team-card h4 {
+            color: #1f2937;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .team-card span {
+            color: #0077b6;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Map Section */
+        .map-container {
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+        }
+
+        .location-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 20px;
+            font-family: inherit;
+        }
+
+        .location-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 119, 182, 0.4);
+        }
+
+        #demo {
+            margin-top: 15px;
+            padding: 15px 20px;
+            background: #f0f2f5;
+            border-radius: 10px;
+            color: #1f2937;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        #demo.show {
+            display: block;
+        }
+
+        /* Research Table */
+        .research-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .research-table th {
+            background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .research-table th:first-child {
+            border-radius: 12px 0 0 0;
+        }
+
+        .research-table th:last-child {
+            border-radius: 0 12px 0 0;
+        }
+
+        .research-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #4b5563;
+            font-size: 0.9rem;
+        }
+
+        .research-table tr:last-child td:first-child {
+            border-radius: 0 0 0 12px;
+        }
+
+        .research-table tr:last-child td:last-child {
+            border-radius: 0 0 12px 0;
+        }
+
+        .research-table tr:hover td {
+            background: rgba(0, 119, 182, 0.03);
+        }
+
+        .research-table a {
+            color: #0077b6;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .research-table a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Section */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .media-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 16px;
+        }
+
+        .media-card h3 {
+            color: #1f2937;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .media-card h3 i {
+            color: #0077b6;
+        }
+
+        .media-card video,
+        .media-card audio {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            color: white;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-main {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(135deg, #0077b6 0%, #023e8a 100%);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            transition: all 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 25px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bottom i {
+            color: #ef4444;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-main {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 40px 20px;
+            }
+
+            .section-card {
+                padding: 30px 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .research-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <nav class="navbar">
-        <label class="logo"><a href="login.php">ReSure</a></label>
-        <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">HELP</a></li>
-            <li><a href="#">FEEDBACK</a></li>
+        <a href="index.php" class="logo"><i class="fa-solid fa-flask-vial"></i> ReSure</a>
+        <ul class="nav-links">
+            <li><a href="dashboard.php"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+            <li><a href="about.html" class="active"><i class="fa-solid fa-circle-info"></i> About</a></li>
+            <li><a href="#"><i class="fa-solid fa-flask"></i> Trials</a></li>
+            <li><a href="#"><i class="fa-solid fa-comments"></i> Feedback</a></li>
         </ul>
     </nav>
-    <div class="bkc">
-        <div class="content">
-            <h1>About Us</h1>
+
+    <section class="hero">
+        <h1><i class="fa-solid fa-heart-pulse"></i> About ReSure</h1>
+        <p>Revolutionizing patient engagement in clinical trials and medical research for a healthier tomorrow</p>
+    </section>
+
+    <main class="main-content">
+        <!-- Mission Section -->
+        <div class="section-card">
+            <h2><i class="fa-solid fa-bullseye"></i> Our Mission</h2>
             <p>At ReSure, we are dedicated to revolutionizing the way patients engage with clinical trials and medical
                 research studies. Our platform was created with the vision of breaking down barriers and making
-                participation in these essential studies more accessible and convenient for patients worldwide.
+                participation in these essential studies more accessible and convenient for patients worldwide.</p>
             <p>We prioritize transparency, confidentiality, and the well-being of our users. Our commitment to privacy
                 ensures that all information shared on our platform is kept secure and confidential, adhering to strict
                 privacy standards.</p>
-            Our team comprises passionate individuals with diverse backgrounds in healthcare, technology, and patient
-            advocacy. Together, we leverage our expertise to develop user-friendly tools that empower patients to easily
-            find and participate in clinical trials and research studies that align with their health needs and
-            preferences.</p>
-            <h2>Our Mission</h2>
-            <p>Our mission at [Company Name] is to empower patients to play an active role in shaping the future of
-                medicine. We believe that every patient deserves the opportunity to contribute to medical advancements
-                and potentially benefit from cutting-edge treatments.</p>
-            <p>Through collaboration with leading healthcare institutions, researchers, and pharmaceutical companies, we
-                strive to facilitate meaningful connections that drive medical progress forward. By bridging the gap
-                between patients and research opportunities, we aim to facilitate groundbreaking discoveries that
-                benefit us all and improve the lives of millions worldwide.</p>
-            <h2>Location</h2>
-            <p>Our hospital is located at:</p>
-            <iframe class="map"
-                src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7660.384377947607!2d72.84358465688231!3d19.005156170492942!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1709490079764!5m2!1sen!2sin"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
 
-            <div id="map"></div>
-            <button class="loc" onclick="getLocation()">Get My Location</button>
-            <p id="demo"></p>
-            <div class="content">
-                <h2>Research Studies</h2>
-                <p>Explore our latest research studies and clinical trials:</p>
-                <table>
-                    <tr>
-                        <th>Study Title</th>
-                        <th>Description</th>
-                        <th>Duration</th>
-                        <th>Location</th> <!-- New heading for study location -->
-                        <th>article</th>
-                    </tr>
-                    <tr>
-                        <td>Diabetes Management Study</td>
-                        <td>A randomized controlled trial investigating the effectiveness of a new medication for
-                            managing type 2 diabetes.</td>
-                        <td>12 months</td>
-                        <td>New York, NY</td> <!-- Example location for the study -->
-                        <td><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9599361/" target="_blank">link</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Heart Disease Prevention Trial</td>
-                        <td>An observational study examining the impact of lifestyle interventions on reducing the risk
-                            of coronary heart disease.</td>
-                        <td>24 months</td>
-                        <td>Los Angeles, CA</td> <!-- Example location for the study -->
-                        <td><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7301047/" target="_blank">link</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <h2>Research Video</h2>
-            <p>Watch a video about our latest research:</p>
-            <div class="media-container">
-                <video class="media" width="320" height="240" controls>
-                    <source src="Cancer.mp4" type="video/mp4">
-                </video>
-
-                <h2>Participate in Research</h2>
-                <p>Listen to an audio message about participating in research:</p>
-                <audio class="media" controls>
-                    <source src="Cancer Research.m4a" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
+        <!-- Features Section -->
+        <div class="section-card">
+            <h2><i class="fa-solid fa-star"></i> Why Choose ReSure?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Secure & Private</h3>
+                    <p>Your data is protected with enterprise-grade encryption and strict privacy standards.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-users"></i>
+                    <h3>Expert Team</h3>
+                    <p>Our team includes healthcare professionals, researchers, and patient advocates.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-globe"></i>
+                    <h3>Global Access</h3>
+                    <p>Connect with clinical trials and research opportunities from anywhere in the world.</p>
+                </div>
             </div>
         </div>
 
-        <footer class="f">
-            <p>@ALL RIGHTS ARE RESERVED TO RESEURE PVT.LTD</p>
-        </footer>
-    </div>
+        <!-- Team Section -->
+        <div class="section-card">
+            <h2><i class="fa-solid fa-people-group"></i> Our Team</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-user-doctor"></i></div>
+                    <h4>Dr. Sarah Johnson</h4>
+                    <span>Chief Medical Officer</span>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-flask"></i></div>
+                    <h4>Dr. Michael Chen</h4>
+                    <span>Research Director</span>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-laptop-code"></i></div>
+                    <h4>Emily Rodriguez</h4>
+                    <span>Tech Lead</span>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-handshake"></i></div>
+                    <h4>James Wilson</h4>
+                    <span>Patient Advocate</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Studies -->
+        <div class="section-card">
+            <h2><i class="fa-solid fa-microscope"></i> Current Research Studies</h2>
+            <p>Explore our latest research studies and clinical trials:</p>
+            <table class="research-table">
+                <tr>
+                    <th>Study Title</th>
+                    <th>Description</th>
+                    <th>Duration</th>
+                    <th>Location</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>Diabetes Management Study</td>
+                    <td>A randomized controlled trial investigating new medication for type 2 diabetes.</td>
+                    <td>12 months</td>
+                    <td>New York, NY</td>
+                    <td><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9599361/" target="_blank">View Study <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Heart Disease Prevention Trial</td>
+                    <td>Observational study on lifestyle interventions for reducing coronary heart disease risk.</td>
+                    <td>24 months</td>
+                    <td>Los Angeles, CA</td>
+                    <td><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7301047/" target="_blank">View Study <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                </tr>
+                <tr>
+                    <td>Cancer Immunotherapy Research</td>
+                    <td>Phase III trial for revolutionary immunotherapy targeting solid tumors.</td>
+                    <td>18 months</td>
+                    <td>Chennai, India</td>
+                    <td><a href="#" target="_blank">View Study <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Location Section -->
+        <div class="section-card">
+            <h2><i class="fa-solid fa-location-dot"></i> Our Location</h2>
+            <p>Visit us at our headquarters or find the nearest partner facility:</p>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7660.384377947607!2d72.84358465688231!3d19.005156170492942!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1709490079764!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <button class="location-btn" onclick="getLocation()">
+                <i class="fa-solid fa-location-crosshairs"></i> Get My Location
+            </button>
+            <p id="demo"></p>
+        </div>
+
+        <!-- Media Section -->
+        <div class="section-card">
+            <h2><i class="fa-solid fa-play-circle"></i> Research Media</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <h3><i class="fa-solid fa-video"></i> Research Video</h3>
+                    <video controls>
+                        <source src="Cancer.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="media-card">
+                    <h3><i class="fa-solid fa-headphones"></i> Audio Introduction</h3>
+                    <audio controls>
+                        <source src="Cancer Research.m4a" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <h3><i class="fa-solid fa-flask-vial"></i> ReSure</h3>
+                    <p>Empowering patients to participate in groundbreaking clinical trials and medical research
+                        studies.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Platform</h4>
+                        <a href="#">Find Trials</a>
+                        <a href="#">How It Works</a>
+                        <a href="#">For Researchers</a>
+                        <a href="#">Success Stories</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Press</a>
+                        <a href="#">Contact</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Support</h4>
+                        <a href="#">Help Center</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">FAQs</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 ReSure Pvt. Ltd. All rights reserved.</p>
+                <p>Made with <i class="fa-solid fa-heart"></i> for better healthcare</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
         function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
             } else {
                 document.getElementById("demo").innerHTML = "Geolocation is not supported by this browser.";
+                document.getElementById("demo").classList.add("show");
             }
         }
 
         function showPosition(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            document.getElementById("demo").innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+            var demo = document.getElementById("demo");
+            demo.innerHTML = "<strong><i class='fa-solid fa-location-dot'></i> Your Location:</strong><br>Latitude: " + position.coords.latitude.toFixed(6) + "<br>Longitude: " + position.coords.longitude.toFixed(6);
+            demo.classList.add("show");
         }
 
+        function showError(error) {
+            var demo = document.getElementById("demo");
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    demo.innerHTML = "Location access denied by user.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    demo.innerHTML = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    demo.innerHTML = "The request to get location timed out.";
+                    break;
+                default:
+                    demo.innerHTML = "An unknown error occurred.";
+                    break;
+            }
+            demo.classList.add("show");
+        }
     </script>
 </body>
 
 </html>
+
+

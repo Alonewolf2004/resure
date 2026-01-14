@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
 
 * {
@@ -8,101 +9,462 @@
 }
 
 body {
-    font-family: Montserrat; /* Corrected font name */
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
 }
 
+/* ========== NAVBAR ========== */
 .navbar {
-    background-color: rgb(29, 65, 110);
+    background: linear-gradient(90deg, rgba(29, 65, 110, 0.95) 0%, rgba(20, 50, 90, 0.98) 100%);
     height: 70px;
     width: 100%;
     z-index: 1000;
     position: fixed;
     top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
-    color: white;
-    font-size: 55px;
-    padding: 0px 100px 0px 25px;
+    font-size: 32px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #fff, #64b5f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo a {
+    color: inherit;
+    text-decoration: none;
+    background: linear-gradient(90deg, #fff, #64b5f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .navbar ul {
-    overflow: auto;
-    margin-left: 15px;
-    float: right;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar li {
-    float: left;
     list-style: none;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .navbar li a {
-    color: white;
-    font-size: 30px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    font-weight: 500;
     text-decoration: none;
-    line-height: 70px;
-    padding: 0px 25px;
+    padding: 10px 18px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
 }
 
+.navbar li a:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.navbar li a.active {
+    background: rgba(100, 181, 246, 0.2);
+    color: #64b5f6;
+}
+
+/* ========== MAIN CONTENT ========== */
 .bkc {
     margin-top: 70px;
-    background-color: rgb(255, 255, 255);
-    background-size: cover;
-    height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: calc(100vh - 70px);
     width: 100%;
+    padding-bottom: 60px;
+    overflow-y: auto;
 }
 
 .content {
     font-family: "Protest Strike", sans-serif;
-    font-size: 25px;
-    font-weight: 1000;
-    font-style: normal;
-    background-color: rgb(207, 202, 202);
+    background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
+    padding: 40px 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
+.content h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #1d416e 0%, #2a5a8f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.content h2 {
+    font-size: 1.6rem;
+    color: #1d416e;
+    margin: 35px 0 18px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.content h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 70%;
+    background: linear-gradient(180deg, #1d416e, #64b5f6);
+    border-radius: 2px;
+}
+
+.content p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #444;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ========== TABLE ========== */
 .content table {
-    width: 80%; 
-    margin: 0 auto; 
-    border-collapse: collapse; 
+    width: 100%;
+    max-width: 100%;
+    margin: 25px 0;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
 .content th,
 .content td {
-    border: 1px solid black;
-    background-color:  #f2f2f2; 
-    padding: 10px; 
-    text-align: center; 
+    padding: 15px 12px;
+    text-align: left;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 1px solid #eee;
 }
 
 .content th {
-    background-color: #f2f2f2; /* Add background color to table header */
-    font-weight: bold; /* Make table header bold */
+    background: linear-gradient(135deg, #1d416e 0%, #2a5a8f 100%);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
 }
 
+.content tr {
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.content tr:hover {
+    background: #f8f9fa;
+    transform: scale(1.01);
+}
+
+.content td a {
+    color: #1d416e;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 6px 12px;
+    background: rgba(29, 65, 110, 0.1);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.content td a:hover {
+    background: #1d416e;
+    color: #fff;
+}
+
+/* ========== MAP ========== */
+.map {
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    margin: 25px auto;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border: 3px solid #fff;
+}
+
+/* ========== LOCATION BUTTON ========== */
+.loc {
+    display: block;
+    margin: 25px auto;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1d416e 0%, #2a5a8f 100%);
+    font-family: 'Montserrat', sans-serif;
+    height: 52px;
+    padding: 0 35px;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(29, 65, 110, 0.3);
+}
+
+.loc:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(29, 65, 110, 0.4);
+}
+
+#demo {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    margin: 15px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+/* ========== MEDIA CONTAINER ========== */
+.media-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 35px 0;
+    padding: 30px;
+    background: linear-gradient(145deg, #fff, #f8f9fa);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.media-container video {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+.media-container audio {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 30px;
+}
+
+.media-container h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.media-container p {
+    width: 100%;
+    text-align: center;
+}
+
+/* ========== FOOTER ========== */
 .f {
     position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color:rgb(29, 65, 110);
-  color: white;
-  text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(29, 65, 110, 0.95) 0%, rgba(20, 50, 90, 0.98) 100%);
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 18px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
 }
 
-.map {
-    width: 270px; 
-    height: 170px; 
-    margin:0 auto ; 
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .content {
+        padding: 30px 20px;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .content h2 {
+        font-size: 1.4rem;
+    }
+
+    .navbar li a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
 }
-.loc{ 
-    border-radius: 20px;
-    background-color:rgb(28, 54, 86);
-    font-family: Montserrat;
-    height: 50px;
-    width: 101px;
-    font-size: 15px;
-    color: white;
-    border-width: 3px;    
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 24px;
+    }
+
+    .navbar ul {
+        display: none;
+    }
+
+    .navbar {
+        justify-content: center;
+    }
+
+    .content h1 {
+        font-size: 1.7rem;
+    }
+
+    .content h2 {
+        font-size: 1.25rem;
+    }
+
+    .content p {
+        font-size: 0.95rem;
+    }
+
+    /* Responsive table */
+    .content table,
+    .content thead,
+    .content tbody,
+    .content tr,
+    .content th,
+    .content td {
+        display: block;
+        width: 100%;
+    }
+
+    .content thead {
+        display: none;
+    }
+
+    .content tr {
+        margin-bottom: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .content td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        border: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .content td:last-child {
+        border-bottom: none;
+    }
+
+    .content td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #1d416e;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+
+    .map {
+        height: 220px;
+    }
+
+    .media-container {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .media-container video {
+        max-width: 100%;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .navbar {
+        height: 60px;
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .bkc {
+        margin-top: 60px;
+    }
+
+    .content {
+        padding: 25px 15px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .content h1 {
+        font-size: 1.4rem;
+    }
+
+    .content h2 {
+        font-size: 1.15rem;
+    }
+
+    .content p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .map {
+        height: 180px;
+        border-radius: 12px;
+    }
+
+    .loc {
+        height: 48px;
+        padding: 0 28px;
+        font-size: 13px;
+        border-radius: 10px;
+    }
+
+    .f {
+        font-size: 10px;
+        padding: 14px 15px;
+    }
+
+    .media-container {
+        padding: 15px;
+        border-radius: 12px;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 350px) {
+    .logo {
+        font-size: 18px;
+    }
+
+    .content h1 {
+        font-size: 1.25rem;
+    }
+
+    .content h2 {
+        font-size: 1.05rem;
+    }
 }
