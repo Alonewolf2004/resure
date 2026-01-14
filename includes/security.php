@@ -124,7 +124,7 @@ function requireAuth() {
 
 // Log security events
 function logSecurityEvent($event, $details = '') {
-    $logFile = __DIR__ . '/logs/security.log';
+    $logFile = dirname(__DIR__) . '/logs/security.log';
     $logDir = dirname($logFile);
     
     if (!is_dir($logDir)) {

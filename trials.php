@@ -1,5 +1,5 @@
 <?php
-require_once 'security.php';
+require_once 'includes/security.php';
 requireAuth();
 
 $username = $_SESSION['username'];

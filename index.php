@@ -1,5 +1,5 @@
 <?php
-require_once 'security.php';
+require_once 'includes/security.php';
 
 // Database connection
 $conn = getSecureConnection();

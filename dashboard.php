@@ -1,5 +1,5 @@
 <?php
-require_once 'security.php';
+require_once 'includes/security.php';
 requireAuth();
 
 $username = $_SESSION['username'];
@@ -12,7 +12,7 @@ $username = $_SESSION['username'];
     <title>Dashboard - ReSure</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c1918dbe9d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body>
     <nav class="navbar">
@@ -40,7 +40,7 @@ $username = $_SESSION['username'];
                 <a href="#" class="hero-btn"><i class="fa-solid fa-search"></i> Explore Trials</a>
             </div>
             <div class="hero-image">
-                <img src="hero-bg.png" alt="Medical Research">
+                <img src="assets/img/hero-bg.png" alt="Medical Research">
             </div>
         </section>
 
@@ -93,7 +93,7 @@ $username = $_SESSION['username'];
             <div class="trials-grid">
                 <div class="trial-card">
                     <div class="trial-image">
-                        <img src="medical-bg.png" alt="Cancer Research">
+                        <img src="assets/img/medical-bg.png" alt="Cancer Research">
                         <span class="trial-badge recruiting">Recruiting</span>
                     </div>
                     <div class="trial-content">
@@ -110,7 +110,7 @@ $username = $_SESSION['username'];
 
                 <div class="trial-card">
                     <div class="trial-image">
-                        <img src="medical-bg.png" alt="Diabetes Study">
+                        <img src="assets/img/medical-bg.png" alt="Diabetes Study">
                         <span class="trial-badge open">Open</span>
                     </div>
                     <div class="trial-content">
@@ -127,7 +127,7 @@ $username = $_SESSION['username'];
 
                 <div class="trial-card">
                     <div class="trial-image">
-                        <img src="medical-bg.png" alt="Heart Health">
+                        <img src="assets/img/medical-bg.png" alt="Heart Health">
                         <span class="trial-badge new">New</span>
                     </div>
                     <div class="trial-content">
